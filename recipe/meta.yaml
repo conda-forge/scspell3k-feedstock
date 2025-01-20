@@ -6,7 +6,7 @@ package:
   version: {{ version }}
 
 source:
-  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/scspell3k-{{ version }}.tar.gz
+  url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/scspell3k-{{ version }}.tar.gz
   sha256: c7ee9dd5f9707d08885259246e20cf6bc73a1ac7876713ab7d1d3ce8cc6dcd09
 
 build:
@@ -14,14 +14,15 @@ build:
     - scspell = scspell:main
   noarch: python
   script: {{ PYTHON }} -m pip install . -vv
-  number: 0
+  number: 1
 
 requirements:
   host:
     - pip
-    - python >=3.2
+    - python {{ python_min }}
+    - setuptools
   run:
-    - python >=3.2
+    - python >={{ python_min }}
 
 test:
   imports:
@@ -31,6 +32,7 @@ test:
     - scspell --help
   requires:
     - pip
+    - python {{ python_min }}
 
 about:
   home: https://github.com/myint/scspell
