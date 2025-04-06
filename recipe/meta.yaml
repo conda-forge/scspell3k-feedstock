@@ -1,5 +1,5 @@
 {% set name = "scspell3k" %}
-{% set version = "2.2" %}
+{% set version = "2.3.0" %}
 
 package:
   name: {{ name|lower }}
@@ -7,14 +7,14 @@ package:
 
 source:
   url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/scspell3k-{{ version }}.tar.gz
-  sha256: c7ee9dd5f9707d08885259246e20cf6bc73a1ac7876713ab7d1d3ce8cc6dcd09
+  sha256: fbe1131593ff0de5dc2cb7cfe2353152e2c82dedba4d3e9316eb58357e855d04
 
 build:
   entry_points:
     - scspell = scspell:main
   noarch: python
   script: {{ PYTHON }} -m pip install . -vv
-  number: 1
+  number: 0
 
 requirements:
   host:
